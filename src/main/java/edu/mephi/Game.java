@@ -86,11 +86,9 @@ public class Game {
   public ArrayList<Result> getResults() { return this.results; }
 
   public void ReadFromExcel() throws IOException {
-    XSSFWorkbook book = new XSSFWorkbook("Results.xlsx"); // TODO
-    // XSSFWorkbook book = new XSSFWorkbook(url.openStream()); // TODO
-    // XSSFWorkbook book =
-    //     new XSSFWorkbook(getClass().getClassLoader().getResourceAsStream(
-    // "Results.xlsx")); // TODO
+    URL url = getClass().getClassLoader().getResource("Results.xlsx");
+    XSSFWorkbook book = new XSSFWorkbook(url.openStream());
+
     XSSFSheet sh = book.getSheetAt(0);
     for (int i = 1; i <= sh.getLastRowNum(); i++) {
       results.add(
